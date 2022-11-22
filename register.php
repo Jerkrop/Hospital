@@ -1,8 +1,4 @@
-<?php
 
-
-
-?>
 <html>
     <link rel="stylesheet" href="register.css">
 <title>Register Page </title>
@@ -19,21 +15,21 @@
 
 </select>
 </br>
-<form action="/landing.php" method="post">
+<form >
     <label for="Firstname">First Name:</label>
-    <input type="text" id="Firstname" name="Firstname" placeholder="any">
+    <input type="text" id="Firstname" name="Firstname"   placeholder="any">
     </br>
     <label for="LastName">Last Name:</label>
     <input type="text" id="LastName" name="LastName" placeholder="any   ">
     </br>
     <label for="Email">Email:</label>
-    <input type="email" id="Email" name="Email" placeholder="example@email.com">
+    <input type="email" id="Email" name="Email"   placeholder="example@email.com">
     </br>
     <label for="Phone">Phone:</label>
-    <input type="number" id="Phone" name="Phone" placeholder="123-4567-890">
+    <input type="number" id="Phone" name="Phone"  placeholder="123-4567-890">
     </br>
     <label for="Password">Password:</label>
-    <input charset="utf8" type="password" id="Password" name="Password" placeholder="any">
+    <input charset="utf8" type="password" id="Password" name="password_1, password_2" placeholder="any">
     </br>
     <label for="DoB">DoB:</label>
     <input type="date" id="DoB" name="DoB" placeholder="yes">
@@ -47,13 +43,13 @@
     <label for="Rel_Em_Contact">RealtiontoEmergencyContact:</label>
     <input type="text" id="Rel_Em_Contact" name="Rel_Em_Contact" placeholder="any">
     </br>
-    <input type="submit" value="Register">
-  
-
+    <button  action="/landing.php" method="post" type="submit" class="btn" name="reg_user">Register</button>
+    <p>
+  		Already a member? <a href="login.php">Sign in</a>
+  	</p>
 
 </form>
-<form action="/Login.php" method="post">
-<input type="submit" value="Cancel">
+
 </div>
 
 </html>
