@@ -1,0 +1,52 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #e7d8c9;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #394f49;
+	padding: 1vw;
+	margin-bottom: 5vh;
+	border: 1px solid #482728;
+}
+
+contentContainer {
+	display: flex;
+}
+
+sidebar {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #482728;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	padding-left: 1vw;
+	padding-right: 3vw;
+	margin-right: 2vw;
+}
+
+#sidebarList li {
+	list-style-type: none;
+}
+
+roster {
+	display: flex;
+}
+
+#rosterTable, th, td {
+	border: 1px solid #482728;
+	border-collapse: collapse;
+}
+
+th, td {
+	background-color: #d3a388;
+}
