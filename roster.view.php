@@ -1,8 +1,7 @@
 <?php
-	if (isset($_SESSION)) {
+	if (!isset($_SESSION)) {
 		session_start();
 	}
-	require "roster.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +17,25 @@
 		<h1>Josef Mengele Memorial</h1>
 		<ion-icon name="person-circle-outline"></ion-icon>
 	</header>
-	<sidebar>
-		<ul>
-			<li>Home</li>
-			<li>Roster</li>
-		</ul>
-	</sidebar>
-	<roster>
-		<table>
-
-		</table>
-	</roster>
+	<contentContainer>
+		<sidebar>
+			<ul id="sidebarList">
+				<li>Home</li>
+				<li>Roster</li>
+			</ul>
+		</sidebar>
+		<roster>
+			<table id="rosterTable">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Role</th>
+					<th>Group #</th>
+				</tr>
+				<?php require "roster.php"?>
+			</table>
+		</roster>
+	</contentContainer>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

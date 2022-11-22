@@ -1,18 +1,22 @@
 <?php
-	if (isset($_SESSION)) {
+	if (!isset($_SESSION)) {
 		session_start();
 	}
 
-	$servername = "localhost";
-	$username = "postgres";
-	$password = "password";
-	$dbname = "Hospital";
+	$db_handle = pg_connect("host=localhost dbname=Hospital user=macowner password=password");
 
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$query = "Select User_.fname, User_.lname, User_.role_, Employee.PatientGroup
+	From Employee
+	Inner Join User_ On Employee.UserId=User_.user_id;";
 
-	if ($conn -> connect_error) {
-		die("Connection failed: " . $conn->connect_error);
+	$result = pg_query($db_handle, $query);
+
+	for ($i = 0; $i < pg_num_rows($result); $i++) {
+		echo "<tr>";
+		for ($j = 0; $j < pg_num_fields($result); $j++) {
+			$info = pg_fetch_result($result, $i, $j);
+			echo "<th>$info</td>";
+		}
+		echo "</tr>";
 	}
-
-	echo "Connected successfully";
 ?>
