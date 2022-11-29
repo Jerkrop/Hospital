@@ -4,9 +4,11 @@
 <title>Register Page </title>
 <h1>  Register </h1>
 <div class="flexbox-container1">
+
+<form action="function.php" method="POST">
 <label for="roles">Choose A Role</label>
 <select name="roles" id="roles">
-    <option value ="Family"> Family</option>
+    <option  value ="Family"> Family</option>
     <option value ="Caregiver"> Caregiver</option>
     <option value ="Doctor"> Doctor</option>
     <option value ="Patient"> Patient</option>
@@ -15,7 +17,6 @@
 
 </select>
 </br>
-<form >
     <label for="Firstname">First Name:</label>
     <input type="text" id="Firstname" name="Firstname"   placeholder="any">
     </br>
@@ -43,7 +44,7 @@
     <label for="Rel_Em_Contact">RealtiontoEmergencyContact:</label>
     <input type="text" id="Rel_Em_Contact" name="Rel_Em_Contact" placeholder="any">
     </br>
-    <button  action="/landing.php" method="post" type="submit" class="btn" name="reg_user">Register</button>
+    <button  action="/function.php" method="POST" type="submit" class="btn" value="register" name="reg_user">Register</button>
     <p>
   		Already a member? <a href="login.php">Sign in</a>
   	</p>
