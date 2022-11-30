@@ -1,30 +1,32 @@
 <?php
 
 
-$db_handle = pg_connect("host=localhost dbname=Hospital user=macowner password=password");
+$db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 
-$query = " SELECT email, password_
+$query1 = " SELECT email, password_, role_ 
             FROM user_ ";
+$user = pg_query($db_handle, $query1);
 
-$result = pg_query($db_handle, $query);
+$query2 = " SELECT employeerole, accesslevel
+            FROM roles";
+$roles = pg_query($db_handle, $query2);
 
-
-
-
-
-$emails = ["cool",1,2,3,4,"5"];
-$passes = ["cool",1,2,3,4,"5"];
 $email = false;
 $pass = false;
 
-
 if(isset($_POST['submit'])){
+    $place = 0;
+    $emails = pg_fetch_all_columns($user);
+    $userrole = pg_fetch_all_columns($user, 2);
+    $role = pg_fetch_all_columns($roles);
+    $levels = pg_fetch_all_columns($roles, 1);
+    $access = "";
     if(isset($_POST['email'])){
         for($x = 0; $x < count($emails); $x++){
             if($emails[$x] == $_POST['email']){
                 $email = true;
+                $place = $x;
             }
-            echo $emails[$x];
         }
         if($email == false){
             echo "This email is not valid";
@@ -34,13 +36,11 @@ if(isset($_POST['submit'])){
         echo "please enter a password";
     }
     if(isset($_POST['pass'])){
-        for($x = 0; $x < count($emails); $x++){
-            if($passes[$x] == $_POST['pass']){
-                $pass = true;
-            }
-            echo $passes[$x];
+        $passes = pg_fetch_all_columns($user, 1);
+        if($passes[$place] == $_POST['pass']){
+            $pass = true;
         }
-        if($pass == false){
+        else{
             echo "This password is not valid";
         }
     }
@@ -48,7 +48,35 @@ if(isset($_POST['submit'])){
         echo "please enter a password";
     }
     if($email == true and $pass == true){
-        echo "this works";
+        for($x = 0; $x < count($role); $x++){
+            if($role[$x] == $userrole[$place]){
+                $access = $levels[$x];
+            }
+        }
+    }
+    if($access == 1){
+        header("Location: fam.php");
+        exit;
+    }
+    elseif($access == 2){
+        header("Location: pat.php");
+        exit;
+    }
+    elseif($access == 3){
+        header("Location: care.php");
+        exit;
+    }
+    elseif($access == 4){
+        header("Location: doc.php");
+        exit;
+    }
+    elseif($access == 5){
+        header("Location: admin.php");
+        exit;
+    }
+    elseif($access == 6){
+        header("Location: admin.php");
+        exit;
     }
 }
 ?>
