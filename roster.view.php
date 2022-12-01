@@ -15,22 +15,25 @@
 <body>
 	<header>
 		<h1>Josef Mengele Memorial</h1>
-		<ion-icon name="person-circle-outline"></ion-icon>
+		<a id="accountIcon" href="#"><ion-icon name="person-circle-outline"></ion-icon></a>
 	</header>
 	<contentContainer>
 		<sidebar>
-			<ul id="sidebarList">
-				<li>Home</li>
-				<li>Roster</li>
-			</ul>
+			<form action="roster.php" method="post" id="sidebar">
+				<ul id="sidebarList">
+					<a href="#"><li>Home</li></a>
+					<a href="roster.view.php"><li>Roster</li></a>
+				</ul>
+			</form>
 		</sidebar>
 		<roster>
+			<h1 id="rosterHeader">Roster</h1>
 			<table id="rosterTable">
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Role</th>
-					<th>Group #</th>
+					<th class="headRow">First Name</th>
+					<th class="headRow">Last Name</th>
+					<th class="headRow">Role</th>
+					<th class="headRow">Group #</th>
 				</tr>
 				<?php require "roster.php"?>
 			</table>
