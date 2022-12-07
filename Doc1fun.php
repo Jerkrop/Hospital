@@ -11,43 +11,16 @@ $night = '';
 $breakfast = '';
 $lunch = '';
 $dinner = '';
-$patid = $_SESSION['id'];
+$docid = $_SESSION['id'];
+
+$query = "SELECT scrip_date, doc_ id, pat_id
+            FROM user_";
+$apps = pg_query($db_handle, $query);
 
 $query = "SELECT user_id, fname, lname
             FROM user_
             WHERE role_ = 'patient'";
 $patnames = pg_query($db_handle, $query);
-
-$patids = pg_fetch_all_columns($patnames);
-for($x = 0; $x < count($patids); $x++){
-    if($patids[$x] == $patid){
-        $patfirst = pg_fetch_all_columns($patnames, 1);
-        $patlast = pg_fetch_all_columns($patnames, 2);
-        $patname = $patfirst[$x] . $patlast[$x];
-    }
-}
-
-$query = "SELECT *
-            FROM appointments";
-$apps = pg_query($db_handle, $query);
-
-$query = "SELECT user_id, fname, lname
-            FROM user_
-            WHERE role_ = 'doctor'";
-$docs = pg_query($db_handle, $query);
-
-$query = "SELECT user_id, fname, lname
-            FROM user_
-            WHERE role_ = 'caregiver'";
-$cares = pg_query($db_handle, $query);
-
-$query = "SELECT userid, PatientGroup
-            FROM patient";
-$pat = pg_query($db_handle, $query);
-
-$query = "SELECT UserId, PatientGroup
-            FROM employee";
-$caregroups = pg_query($db_handle, $query);
 
 $query = "SELECT *
             FROM activities";

@@ -1,15 +1,15 @@
 <?php
-
+session_start();
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 
-$query1 = " SELECT email, password_, role_ 
+$query = " SELECT email, password_, role_, user_id
             FROM user_ ";
-$user = pg_query($db_handle, $query1);
+$user = pg_query($db_handle, $query);
 
-$query2 = " SELECT employeerole, accesslevel
+$query = " SELECT employeerole, accesslevel
             FROM roles";
-$roles = pg_query($db_handle, $query2);
+$roles = pg_query($db_handle, $query);
 
 $email = false;
 $pass = false;
@@ -18,6 +18,7 @@ if(isset($_POST['submit'])){
     $place = 0;
     $emails = pg_fetch_all_columns($user);
     $userrole = pg_fetch_all_columns($user, 2);
+    $id = pg_fetch_all_columns($user, 3);
     $role = pg_fetch_all_columns($roles);
     $levels = pg_fetch_all_columns($roles, 1);
     $access = "";
@@ -26,6 +27,7 @@ if(isset($_POST['submit'])){
             if($emails[$x] == $_POST['email']){
                 $email = true;
                 $place = $x;
+                $_SESSION['id'] = $id[$x];
             }
         }
         if($email == false){
@@ -50,6 +52,7 @@ if(isset($_POST['submit'])){
     if($email == true and $pass == true){
         for($x = 0; $x < count($role); $x++){
             if($role[$x] == $userrole[$place]){
+                $_SESSION["Access"] = $levels[$x];
                 $access = $levels[$x];
             }
         }
