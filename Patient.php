@@ -1,28 +1,17 @@
+
 <html>
-<title>Patient Page</title>
+<title>Patient Search Page</title>
 <link rel="stylesheet" href="register.css">
 
-<h1>Patient<h1>
+<h1>Patient Search<h1>
 <div class="flexbox-container1">
-<form>
-<label for="ID">ID:</label>
-    <input type="text" id="ID" name="ID" placeholder="any">
-    </br>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="any">
-    </br>
-    <label for="Age">Age:</label>
-    <input type="text" id="Age" name="Age" placeholder="any">
-    </br>
-    <label for="Emergeny_Contact">Emergency Contact:</label>
-    <input type="text" id="Emergeny_Contact" name="Emergeny_Contact" placeholder="any">
-    </br>
-    <label for="Emergeny_Contact_Name">Emergency Contact name:</label>
-    <input type="text" id="Emergeny_Contact_Name" name="Emergeny_Contact_Name" placeholder="any">
-    </br>
-    <label for="Admission_Date">Admission Date:</label>
-    <input type="text" id="Admission_Date" name="Admission_Date" placeholder="any">
-    </br>
+<form action="output_patient.php" method="POST">
+    
+<div class="input-group mb-3">
+ <input type="text" name="search" required value="<?php if(isset($_POST['search'])){echo $_POST['search']; } ?>" class="form-control" placeholder="Search data">
+<button type="submit" class="btn btn-primary">Search</button>
+
+</form>
 </form>
 </div>
 </html>
