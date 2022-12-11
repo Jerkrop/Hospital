@@ -4,7 +4,11 @@
    <title>Payment Page</title>
    
    <h1>Payment Page</h1>
+<<<<<<< HEAD
+   <form action="payment_function.php">
+=======
    <form>
+>>>>>>> 095de30d75de6becd600beb9ef3fe0a3b382335e
    <label for="Pat_ID">Patient ID:</label>
     <input type="text" id="Pat_ID" name="Pat_ID" placeholder="any">
     </br>
@@ -19,8 +23,18 @@
 
 
 </form>
+<<<<<<< HEAD
+
+</div>
+</form>
+</html>
+<?php
+require "payment_function.php"
+?>
+=======
 <form>
 <button type="submit" >Cancel</button>
 </div>
 </form>
 </html>
+>>>>>>> 095de30d75de6becd600beb9ef3fe0a3b382335e
