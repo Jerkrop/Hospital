@@ -14,7 +14,11 @@
 </form>
 </form>
 </div>
+<<<<<<< HEAD
 </html>
 <?php
 require "output_patient.php"
 ?>
+=======
+</html>
+>>>>>>> 095de30d75de6becd600beb9ef3fe0a3b382335e
