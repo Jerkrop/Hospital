@@ -19,7 +19,7 @@
 
 </select>
 </br>
-<form action="/landing.php" method="post">
+<form   action="/login.php" method="POST">
     <label for="Firstname">First Name:</label>
     <input type="text" id="Firstname" name="Firstname" placeholder="any">
     </br>
@@ -47,13 +47,15 @@
     <label for="Rel_Em_Contact">RealtiontoEmergencyContact:</label>
     <input type="text" id="Rel_Em_Contact" name="Rel_Em_Contact" placeholder="any">
     </br>
-    <input type="submit" value="Register">
+    <input type="submit" value="Register" name="reg_user">
+  
   
 
-
 </form>
-<form action="/Login.php" method="post">
-<input type="submit" value="Cancel">
+
 </div>
 
 </html>
+<?php
+require "function_register.php"
+?>
