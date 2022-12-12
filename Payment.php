@@ -4,26 +4,21 @@
    <title>Payment Page</title>
    
    <h1>Payment Page</h1>
-<<<<<<< HEAD
-   <form action="payment_function.php">
-=======
-   <form>
->>>>>>> 095de30d75de6becd600beb9ef3fe0a3b382335e
+   <form action="payment.php" method="POST">
    <label for="Pat_ID">Patient ID:</label>
     <input type="text" id="Pat_ID" name="Pat_ID" placeholder="any">
+    <button type="submit"action="payment.php" method="POST" name="submit"> ok</button>
     </br>
-    <label for="Total_Due">Total Due:</label>
-    <input type="text" id="Total_Due" name="Total_Due" placeholder="any">
-    </br>
-    <label for="New Payment">Patient ID:</label>
+    <label  id="Total_Due"  name="Total_Due" for="Total_Due">Total Due:</label>
+      </br>
+    <label for="New Payment">New Payment:</label>
     <input type="text" id="New Payment" name="New Payment" placeholder="any">
     </br>
-    <button type="submit" >Pay</button>
+    <button type="submit" action="payment.php" name="submit" method="POST" >Pay</button>
   
 
 
 </form>
-<<<<<<< HEAD
 
 </div>
 </form>
@@ -31,10 +26,3 @@
 <?php
 require "payment_function.php"
 ?>
-=======
-<form>
-<button type="submit" >Cancel</button>
-</div>
-</form>
-</html>
->>>>>>> 095de30d75de6becd600beb9ef3fe0a3b382335e
