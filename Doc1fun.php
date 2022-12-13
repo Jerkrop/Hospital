@@ -2,20 +2,20 @@
 session_start();
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
-$docname = '';
-$appointment = '';
-$caregiver = '';
-$morning = '';
-$afternoon = '';
-$night = '';
-$breakfast = '';
-$lunch = '';
-$dinner = '';
 $docid = $_SESSION['id'];
 
-$query = "SELECT scrip_date, doc_ id, pat_id
-            FROM user_";
-$apps = pg_query($db_handle, $query);
+if(isset($_POST['datesearch'])){
+    $query = "SELECT scrip_date, pat_id
+            FROM appointments
+            WHERE doc_id =" . $docid;
+    $apps = pg_query($db_handle, $query);
+}
+else{
+    $query = "SELECT scrip_date, pat_id
+            FROM appointments
+            WHERE doc_id =" . $docid;
+    $apps = pg_query($db_handle, $query);
+}
 
 $query = "SELECT user_id, fname, lname
             FROM user_
@@ -26,99 +26,83 @@ $query = "SELECT *
             FROM activities";
 $acts = pg_query($db_handle, $query);
 
-if(isset($_POST['submit'])){
-    $dates = pg_fetch_all_columns($apps, 1);
-    $appids = pg_fetch_all_columns($apps, 3);
-    $patids = pg_fetch_all_columns($pat);
-    $patgroup = pg_fetch_all_columns($pat, 1);
-    $actids = pg_fetch_all_columns($acts);
-    $morns = pg_fetch_all_columns($acts, 1);
-    $afts = pg_fetch_all_columns($acts, 2);
-    $nits = pg_fetch_all_columns($acts, 3);
-    $breaks = pg_fetch_all_columns($acts, 4);
-    $luns = pg_fetch_all_columns($acts, 5);
-    $dins = pg_fetch_all_columns($acts, 6);
-    $appdoc = pg_fetch_all_columns($apps, 2);
-    $docids = pg_fetch_all_columns($docs);
-    $docfirst = pg_fetch_all_columns($docs, 1);
-    $doclast = pg_fetch_all_columns($docs, 2);
-    $careids = pg_fetch_all_columns($cares);
-    $carefirst = pg_fetch_all_columns($cares, 1);
-    $carelast = pg_fetch_all_columns($cares, 2);
-    $caregroup = pg_fetch_all_columns($caregroups, 1);
-    $caregroupid = pg_fetch_all_columns($caregroups);
-    if(in_array($_POST['date'], $dates)){
-        for($i = 0; $i < count($dates); $i++){
-            if(($dates[$i] == $_POST['date']) and ($appids[$i] == $patid)){
-                for($x = 0; $x < count($patids); $x++){
-                    if($patids[$x] == $patid){
-                        $appointment = 'yes';
-                        for($y = 0; $y < count($actids); $y++){
-                            if($actids[$y] == $patid){
-                                if($morns[$y] == true){
-                                    $morning = 'yes';
-                                }
-                                else{
-                                    $morning = 'no';
-                                }
-                                if($afts[$y] == true){
-                                    $afternoon = 'yes';
-                                }
-                                else{
-                                    $afternoon = 'no';
-                                }
-                                if($nits[$y] == true){
-                                    $night = 'yes';
-                                }
-                                else{
-                                    $night = 'no';
-                                }
-                                if($breaks[$y] == true){
-                                    $breakfast= 'yes';
-                                }
-                                else{
-                                    $breakfast = 'no';
-                                }
-                                if($luns[$y] == true){
-                                    $lunch = 'yes';
-                                }
-                                else{
-                                    $lunch = 'no';
-                                }
-                                if($dins[$y] == true){
-                                    $dinner = 'yes';
-                                }
-                                else{
-                                    $dinner = 'no';
-                                }
-                                break;
-                            }
-                        }
-                        for($z = 0; $z < count($docids); $z++){
-                            if($docids[$z] == $appdoc[$i]){
-                                $docname = $docfirst[$z] . $doclast[$z];
-                                break;
-                            }
-                        }
-                        for($z = 0; $z < count($caregroupid); $z++){
-                            if($caregroup[$z] == $patgroup[$x]){
-                                for($w = 0; $w < count($careids); $w++)
-                                {
-                                    if($caregroupid[$z] = $careids[$w]){
-                                        $caregiver = $carefirst[$w] . $carelast[$w];
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
+$date = pg_fetch_all_columns($apps);
+$apppat = pg_fetch_all_columns($apps, 1);
+$patids = pg_fetch_all_columns($patnames);
+$patfirst = pg_fetch_all_columns($patnames, 1);
+$patlast = pg_fetch_all_columns($patnames, 2);
+$actpat = pg_fetch_all_columns($acts);
+$morns = pg_fetch_all_columns($acts, 1);
+$afts = pg_fetch_all_columns($acts, 2);
+$nits = pg_fetch_all_columns($acts, 3);
+$breaks = pg_fetch_all_columns($acts, 4);
+$luns = pg_fetch_all_columns($acts, 5);
+$dins = pg_fetch_all_columns($acts, 6);
+$actdate = pg_fetch_all_columns($acts, 7);
+$actcom = pg_fetch_all_columns($acts, 8);
+
+$comment = [];
+$patname = [];
+$morn = [];
+$aft = [];
+$night = [];
+$patid = [];
+for($i = 0; $i < count($date); $i++){
+    $skip = 0;
+    for($x = 0; $x < count($patids); $x++){
+        if($apppat[$i] == $patids[$x]){
+            if(isset($_POST['namesearch'])){
+                if($patfirst[$x].$patlast[$x] == $_POST['name']){
+                    array_push($patname, $patfirst[$x].$patlast[$x]);
+                    array_push($patid, $patids[$x]);
+                    break;
                 }
+            }
+            else{
+                array_push($patname, $patfirst[$x].$patlast[$x]);
+                array_push($patid, $patids[$x]);
+                break;
+            }
+        }
+        if($x+1 == count($patids)){
+            $skip=1;
+        }
+    }
+    if((in_array($apppat[$i], $actpat)) and ($skip != 1)){
+        for($x = 0; $x < count($actpat); $x++){
+            if(($apppat[$i] == $actpat[$x])and($date[$i] == $actdate[$x])){
+                array_push($comment, $actcom[$x]);
+                array_push($morn, $morns[$x]);
+                array_push($aft, $afts[$x]);
+                array_push($night, $nights[$x]);
+                break;
+            }
+            if($x+1 == count($actpat)){
+                array_push($comment, '');
+                array_push($morn, '');
+                array_push($aft, '');
+                array_push($night, '');
             }
         }
     }
     else{
-        echo "no appointment scheduled";
+        array_push($comment, '');
+        array_push($morn, '');
+        array_push($aft, '');
+        array_push($night, '');
     }
 }
-$VAR = "cool";
+if(isset($_POST['submit'])){
+    $_SESSION['patid'] = $_POST['id'];
+    $_SESSION['name'] = $_POST['name'];
+    $_SESSION['comment'] = $_POST['comment'];
+    $_SESSION['date'] = $_POST['date'];
+    $_SESSION['morning'] = $_POST['morning'];
+    $_SESSION['afternoon'] = $_POST['afternoon'];
+    $_SESSION['night'] = $_POST['night'];
+
+    header("Location: doc2.php");
+    exit;
+}
+
 ?>

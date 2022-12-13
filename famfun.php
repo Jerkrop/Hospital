@@ -131,5 +131,4 @@ if(isset($_POST['submit'])){
         echo "does not match any records";
     }
 }
-$VAR = "cool";
 ?>
