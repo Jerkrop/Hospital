@@ -147,5 +147,4 @@ if(isset($_POST['submit'])){
         echo "no appointment scheduled";
     }
 }
-$VAR = "cool";
 ?>

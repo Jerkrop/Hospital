@@ -1,4 +1,5 @@
 <?php
+session_destroy();
 session_start();
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
@@ -70,7 +71,7 @@ if(isset($_POST['submit'])){
         exit;
     }
     elseif($access == 4){
-        header("Location: doc.php");
+        header("Location: doc1.php");
         exit;
     }
     elseif($access == 5){
