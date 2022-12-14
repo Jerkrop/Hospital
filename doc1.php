@@ -28,7 +28,7 @@
       if($date[$a] <= date('Y-m-d')){
       echo "<tr>
       <td><form id='" . $a . "' action = 'doc1.php' method='POST'></form>
-      <input form='" . $a . "' name='id' value='" . $patid[$a] . "' readonly='readonly' style='visibility:hidden'>
+      <input size='1' form='" . $a . "' name='id' value='" . $patid[$a] . "' readonly='readonly' style='visibility:hidden'>
       <input form='" . $a . "' name='name' value='" . $patname[$a] . "' readonly='readonly'></td>
       <td><input form='" . $a . "' name='date' type='date' value='" . $date[$a] . "' readonly='readonly'></td>
       <td><input form='" . $a . "' name='comment' value='" . $comment[$a] . "' readonly='readonly'></td>
