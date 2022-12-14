@@ -1,5 +1,7 @@
 <?php
-session_destroy();
+if(session_status() == PHP_SESSION_ACTIVE){
+    session_destroy();
+}
 session_start();
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");

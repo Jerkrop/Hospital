@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('America/New_York');
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 $docid = $_SESSION['id'];
@@ -7,7 +8,7 @@ $docid = $_SESSION['id'];
 if(isset($_POST['datesearch'])){
     $query = "SELECT scrip_date, pat_id
             FROM appointments
-            WHERE doc_id =" . $docid;
+            WHERE doc_id =" . $docid . " AND scrip_date = '" . $_POST['date'] . "'";
     $apps = pg_query($db_handle, $query);
 }
 else{
@@ -72,9 +73,15 @@ for($i = 0; $i < count($date); $i++){
         for($x = 0; $x < count($actpat); $x++){
             if(($apppat[$i] == $actpat[$x])and($date[$i] == $actdate[$x])){
                 array_push($comment, $actcom[$x]);
-                array_push($morn, $morns[$x]);
-                array_push($aft, $afts[$x]);
-                array_push($night, $nights[$x]);
+                if($morns[$x] != ''){
+                    array_push($morn, 'yes');
+                }
+                if($afts[$x] != ''){
+                    array_push($aft, 'yes');
+                }
+                if($nits[$x] != ''){
+                    array_push($night, 'yes');
+                }
                 break;
             }
             if($x+1 == count($actpat)){
