@@ -56,7 +56,7 @@
           if($date[$a] <= $_POST['lastdate']){
             echo "<tr>
                   <td><p>" . $patname[$a] . "</p></td>
-                  <td><p>'" . $date[$a] . "' <p></td></tr>";
+                  <td><p>" . $date[$a] . "<p></td></tr>";
           }
         }
       }
