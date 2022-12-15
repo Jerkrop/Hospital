@@ -9,9 +9,9 @@
 <label for="Date">Date:</label>
     <input type="Date" id="Date" name="Date" placeholder="any">
     <button type="submit"  action="Admin_report.php"  method="POST" class="btn" value="submit" name="submit">Submit</button>
-<table>
+    <table>
     <tr>
-  
+    
     <h3> Missed Patient Activity </h3>
     <th  id="Morn_med"name="Morn_med" for="Morn_med">Morning Medicine:</th>
  
@@ -26,6 +26,7 @@
 
 
     <th id="Lunch"name="Lunch" for="Lunch">Lunch:</th>
+
 
     <th  id="Dinner"name="Dinner" for="Dinner">Dinner:</th>
 
