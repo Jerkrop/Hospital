@@ -4,9 +4,6 @@ date_default_timezone_set('America/New_York');
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 
-echo $_SESSION['date'];
-echo date('Y-m-d');
-
 if($_SESSION['date'] != date('Y-m-d')){
     echo "Appointment is not today, perscription can not be added";
 }
@@ -53,8 +50,5 @@ if((isset($_POST['submit'])) and ($_SESSION['date'] == date('Y-m-d'))){
     $query = "INSERT INTO ACTIVITIES(pat_id, morn, afternoon, night, break, lunch, dinner, set_date, comment)
     VALUES(" . $Q[0] . ", " . $Q[3] . ", " . $Q[4] . ", " . $Q[5] . ", FALSE, FALSE, FALSE, '" . $Q[2] . "', '" . $Q[1] . "')";
     $Q = pg_query($db_handle, $query);
-
-
-    echo "perscription added";
 }
 ?>

@@ -26,7 +26,7 @@ for($x = 0; $x < count($patids); $x++){
     if($patids[$x] == $patid){
         $patfirst = pg_fetch_all_columns($patnames, 1);
         $patlast = pg_fetch_all_columns($patnames, 2);
-        $patname = $patfirst[$x] . $patlast[$x];
+        $patname = $patfirst[$x] . " " . $patlast[$x];
     }
 }
 
@@ -130,7 +130,7 @@ if(isset($_POST['submit'])){
                         }
                         for($z = 0; $z < count($docids); $z++){
                             if($docids[$z] == $appdoc[$i]){
-                                $docname = $docfirst[$z] . $doclast[$z];
+                                $docname = $docfirst[$z] . " " . $doclast[$z];
                                 break;
                             }
                         }
@@ -139,7 +139,7 @@ if(isset($_POST['submit'])){
                                 for($w = 0; $w < count($careids); $w++)
                                 {
                                     if($caregroupid[$z] = $careids[$w]){
-                                        $caregiver = $carefirst[$w] . $carelast[$w];
+                                        $caregiver = $carefirst[$w] . " " . $carelast[$w];
                                         break;
                                     }
                                 }
@@ -196,7 +196,7 @@ if(isset($_POST['submit'])){
                 if($caregroup[$z] == $patgroup[0]){
                     for($w = 0; $w < count($careids); $w++){
                         if($caregroupid[$z] = $careids[$w]){
-                            $caregiver = $carefirst[$w] . $carelast[$w];
+                            $caregiver = $carefirst[$w] . " " . $carelast[$w];
                             break;
                         }
                     }

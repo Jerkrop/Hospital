@@ -20,8 +20,8 @@
         </ul>
       </div>
     </sidebar>
-        <p><?php echo $patid;?></p>
-        <p><?php echo $patname;?></p>
+        <p>Your ID:<?php echo $patid;?></p>
+        <p>Your Name:<?php echo $patname;?></p>
     <form action="pat.php" method="post">
         <input type="date" name="date" value="<?php echo $_SESSION['date'];?>">
         <input type="submit" name="submit">

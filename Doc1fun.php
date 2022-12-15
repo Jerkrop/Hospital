@@ -60,7 +60,7 @@ for($i = 0; $i < count($date); $i++){
                 }
             }
             else{
-                array_push($patname, $patfirst[$x].$patlast[$x]);
+                array_push($patname, $patfirst[$x] . " " . $patlast[$x]);
                 array_push($patid, $patids[$x]);
                 break;
             }
