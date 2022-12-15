@@ -23,18 +23,134 @@
 		</a>
 	</header>
 	<contentContainer>
-		<sidebar>
-			<div id="sidebarContainer">
-				<ul id="sidebarList">
-					<a href="#">
-						<li>Home</li>
-					</a>
-					<a href="roster.view.php">
-						<li>Roster</li>
-					</a>
-				</ul>
-			</div>
-		</sidebar>
+	<?php
+	if($_SESSION['Access'] == 4){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='doc1.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";
+	}
+	else if($_SESSION['Access'] == 1){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='fam.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";
+	}
+	else if($_SESSION['Access'] == 3){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='caregiver.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='patient.php'>
+					<li>patient info</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";
+	}
+	else if($_SESSION['Access'] == 2){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='pat.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";		
+	}
+	else if($_SESSION['Access'] == 6){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='fam.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='addRoster.php'>
+					<li>roster edit</li>
+			  </a>
+			  <a href='payment.php'>
+					<li>rpayment</li>
+			  </a>
+			  <a href='admin_report.php'>
+					<li>reports</li>
+			  </a>
+			  <a href='employee.php'>
+					<li>employee info</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";
+	}
+	else if($_SESSION['Access'] == 5){
+		echo "<sidebar>
+		<div id='sidebarContainer'>
+		  <ul id='sidebarList'>
+			  <a href='login.php'>
+					<li>logout</li>
+			  </a>
+			  <a href='fam.php'>
+					<li>Home</li>
+			  </a>
+			  <a href='addRoster.php'>
+					<li>roster edit</li>
+			  </a>
+			  <a href='admin_report.php'>
+					<li>reports</li>
+			  </a>
+			  <a href='employee.php'>
+					<li>employee info</li>
+			  </a>
+			  <a href='roster.view.php'>
+					<li>Roster</li>
+			  </a>
+		  </ul>
+		</div>
+	  </sidebar>";
+	}
+	?>
 		<roster>
 			<h1 id="rosterHeader">Roster</h1>
 			<datePicker>

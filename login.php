@@ -9,6 +9,9 @@
             <input type="text" name="pass" value="Enter your password">
             <input type="submit" name="submit">
         </form>
+        <a href="register.php">
+            <p>register here</p>
+        </a>
     </body>
 </html>
 

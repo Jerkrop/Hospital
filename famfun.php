@@ -1,4 +1,5 @@
 <?php
+session_start();
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 $docname = '';
 $appointment = '';
@@ -66,37 +67,40 @@ if(isset($_POST['submit'])){
                         $appointment = 'yes';
                         for($y = 0; $y < count($actids); $y++){
                             if($actids[$y] == $_POST['patid']){
-                                if($morns[$y] == true){
+                                echo $morns[$y];
+                                echo $afts[$y];
+                                echo $nits[$y];
+                                if($morns[$y] == 't'){
                                     $morning = 'yes';
                                 }
                                 else{
                                     $morning = 'no';
                                 }
-                                if($afts[$y] == true){
+                                if($afts[$y] == 't'){
                                     $afternoon = 'yes';
                                 }
                                 else{
                                     $afternoon = 'no';
                                 }
-                                if($nits[$y] == true){
+                                if($nits[$y] == 't'){
                                     $night = 'yes';
                                 }
                                 else{
                                     $night = 'no';
                                 }
-                                if($breaks[$y] == true){
+                                if($breaks[$y] == 't'){
                                     $breakfast= 'yes';
                                 }
                                 else{
                                     $breakfast = 'no';
                                 }
-                                if($luns[$y] == true){
+                                if($luns[$y] == 't'){
                                     $lunch = 'yes';
                                 }
                                 else{
                                     $lunch = 'no';
                                 }
-                                if($dins[$y] == true){
+                                if($dins[$y] == 't'){
                                     $dinner = 'yes';
                                 }
                                 else{

@@ -7,6 +7,21 @@ require 'doc2fun.php'
     <title>Mengele Memorial</title>
     </head>
     <body>
+    <sidebar>
+      <div id="sidebarContainer">
+        <ul id="sidebarList">
+        <a href="login.php">
+          <li>logout</li>
+        </a>
+        <a href="doc1.php">
+          <li>Home</li>
+        </a>
+        <a href="roster.view.php">
+          <li>Roster</li>
+        </a>
+        </ul>
+      </div>
+    </sidebar>
         <table>
             <tr>
                 <th>Date</th>
