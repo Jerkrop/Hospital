@@ -24,6 +24,7 @@ if (!isset($_SESSION)) {
 	</header>
 	<contentContainer>
 	<?php
+	if (isset($_SESSION['access'])) {
 	if($_SESSION['Access'] == 4){
 		echo "<sidebar>
 		<div id='sidebarContainer'>
@@ -150,6 +151,7 @@ if (!isset($_SESSION)) {
 		</div>
 	  </sidebar>";
 	}
+}
 	?>
 
 		<form action="caregiver.view.php" method="post">
