@@ -19,8 +19,9 @@ header {
 	border: 1px solid #482728;
 }
 
-contentContainer {
-	display: flex;
+#accountIcon {
+	font-size: 2em;
+	color: #000;
 }
 
 sidebar {
@@ -55,15 +56,31 @@ sidebar {
 	background-color: #C58663;
 }
 
-
-rosterManager {
-	background-color: #d3a388;
-	border: 1px solid #482728;
+#formHeader {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.25em;
 }
 
-#managerHeader {
-	font-size: 1.25em;
-	font-weight: bold;
-	text-align: center;
+#dateInput {
+	margin: 1vw 0 1vw 0;
+}
+
+#adminTable {
+	width: 80vw;
+}
+
+#adminTable, th {
+	border: 1px solid #482728;
+	border-collapse: collapse;
+	text-align: left;
+	padding: 0.5vh 0 0.5vh 1vw;
+	padding-left: 1vw;
+	background-color: #d3a388;
+}
+
+.headRow {
 	background-color: #C58663;
+	font-size: 1.25em;
+	padding: 0.5vh 0 0.5vh 1vw;
 }

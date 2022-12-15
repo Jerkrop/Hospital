@@ -62,7 +62,17 @@
 
 				$result = pg_query($db_handle, $query);
 			}
+			} elseif (isset($_POST['additionalInfo'])) {
+				$patientId = $_POST['patientId'];
+				$patientGroup = $_POST['patientGroup'];
+				$admissionDate = $_POST['admissionDate'];
+				$query = "Update patient
+				Set patientgroup = $patientGroup, administrationdate = '$admissionDate'
+				Where userid = $patientId;";
+
+				$result = pg_query($db_handle, $query);
+
+			}
 		}
-	}
 
 ?>
