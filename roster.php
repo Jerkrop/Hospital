@@ -26,7 +26,7 @@
 				echo "<tr class='employee'>";
 				for ($j = 0; $j < pg_num_fields($result); $j++) {
 					$info = pg_fetch_result($result, $i, $j);
-					echo "<th class='employee'>$info</td>";
+					echo "<th class='employee'>$info</th>";
 				}
 				echo "</tr>";
 			}
