@@ -23,7 +23,7 @@
         <p><?php echo $patid;?></p>
         <p><?php echo $patname;?></p>
     <form action="pat.php" method="post">
-        <input type="date" name="date" value="<?php echo date('Y-m-d');?>">
+        <input type="date" name="date" value="<?php echo $_SESSION['date'];?>">
         <input type="submit" name="submit">
     </form>
     <table>

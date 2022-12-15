@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['date'])){
+    $_SESSION['date'] = date('Y-m-d');
+}
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 $docname = '';
@@ -55,14 +58,9 @@ $query = "SELECT *
             WHERE pat_id =" . $patid;
 $acts = pg_query($db_handle, $query);
 
-if((isset($_POST['submit']))or(!isset($first))){
-    if(!isset($first)){
-        $first = true;
-        $date = date('Y-m-d');
-    }
-    else{
-        $date = $_POST['date'];
-    }
+if(isset($_POST['submit'])){
+    $date = $_POST['date'];
+    $_SESSION['date'] = $date;
     $dates = pg_fetch_all_columns($apps, 1);
     $appids = pg_fetch_all_columns($apps, 3);
     $patids = pg_fetch_all_columns($pat);
