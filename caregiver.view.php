@@ -24,13 +24,12 @@ if (!isset($_SESSION)) {
 	</header>
 	<contentContainer>
 	<?php
-	if (isset($_SESSION['access'])) {
 	if($_SESSION['Access'] == 4){
 		echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
-					<li>logout</li>
+					<li>Logout</li>
 			  </a>
 			  <a href='doc1.php'>
 					<li>Home</li>
@@ -47,7 +46,7 @@ if (!isset($_SESSION)) {
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
-					<li>logout</li>
+					<li>Logout</li>
 			  </a>
 			  <a href='fam.php'>
 					<li>Home</li>
@@ -64,13 +63,13 @@ if (!isset($_SESSION)) {
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
-					<li>logout</li>
+					<li>Logout</li>
 			  </a>
 			  <a href='caregiver.php'>
 					<li>Home</li>
 			  </a>
 			  <a href='patient.php'>
-					<li>patient info</li>
+					<li>Patient info</li>
 			  </a>
 			  <a href='roster.view.php'>
 					<li>Roster</li>
@@ -84,7 +83,7 @@ if (!isset($_SESSION)) {
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
-					<li>logout</li>
+					<li>Logout</li>
 			  </a>
 			  <a href='pat.php'>
 					<li>Home</li>
@@ -107,16 +106,16 @@ if (!isset($_SESSION)) {
 					<li>Home</li>
 			  </a>
 			  <a href='addRoster.php'>
-					<li>roster edit</li>
+					<li>Roster edit</li>
 			  </a>
 			  <a href='payment.php'>
-					<li>rpayment</li>
+					<li>Payment</li>
 			  </a>
 			  <a href='admin_report.php'>
-					<li>reports</li>
+					<li>Reports</li>
 			  </a>
 			  <a href='employee.php'>
-					<li>employee info</li>
+					<li>Employee info</li>
 			  </a>
 			  <a href='roster.view.php'>
 					<li>Roster</li>
@@ -130,19 +129,19 @@ if (!isset($_SESSION)) {
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
-					<li>logout</li>
+					<li>Logout</li>
 			  </a>
 			  <a href='fam.php'>
 					<li>Home</li>
 			  </a>
 			  <a href='addRoster.php'>
-					<li>roster edit</li>
+					<li>Roster edit</li>
 			  </a>
 			  <a href='admin_report.php'>
-					<li>reports</li>
+					<li>Reports</li>
 			  </a>
 			  <a href='employee.php'>
-					<li>employee info</li>
+					<li>Employee info</li>
 			  </a>
 			  <a href='roster.view.php'>
 					<li>Roster</li>
@@ -151,7 +150,6 @@ if (!isset($_SESSION)) {
 		</div>
 	  </sidebar>";
 	}
-}
 	?>
 
 		<form action="caregiver.view.php" method="post">
@@ -172,6 +170,9 @@ if (!isset($_SESSION)) {
 			<button type="submit">Ok</button>
 		</form>
 	</contentContainer>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
