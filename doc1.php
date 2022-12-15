@@ -2,10 +2,14 @@
 <DOCTYPE html>
 <html>
     <head>
-    <title>Mengele Memorial</title>
+    <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="willcss.css">
+    <title>doctor</title>
     </head>
     <body>
-    <sidebar>
+    <sidebar class = 'sidebar'>
       <div id="sidebarContainer">
         <ul id="sidebarList">
         <a href="login.php">
@@ -55,9 +59,13 @@
     }
   ?>
   </table>
+  <br>
+  <br>
+  <br>
+  <br>
   <form action = 'doc1.php' method='POST'>
+        <input type='submit' value='show appointments up till'>
         <input type='date' name='lastdate'>
-        <input type='submit' name='datetill'>
       </form>
   <table>
   <tr>

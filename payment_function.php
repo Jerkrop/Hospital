@@ -1,5 +1,5 @@
 <?php
-    $dbconn = pg_connect("host=localhost  dbname=Hospital user=postgres password=Meegee12");
+    $dbconn = pg_connect("host=localhost  dbname=Hospital user=macowner password=password");
 $v = false;
 if (isset($_POST['submit1'])) {
 

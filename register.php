@@ -4,11 +4,7 @@
 <h1>  Register </h1>
 <div class="flexbox-container1">
 
-<<<<<<< HEAD
-<form action="login.php" method="POST">
-=======
 <form action="register.php" method="POST">
->>>>>>> 7a6e397ac6e27fd9ebcc42ad4bf89e20a608d372
 <label for="roles">Choose A Role</label>
 <select name="roles" id="roles">
     <option  value ="Family"> Family</option>
@@ -19,10 +15,7 @@
     <option value ="Supervisor"> Supervisor</option>
 </select>
 </br>
-<<<<<<< HEAD
-=======
 <form   action="register.php" method="POST">
->>>>>>> 7a6e397ac6e27fd9ebcc42ad4bf89e20a608d372
     <label for="Firstname">First Name:</label>
     <input type="text" id="Firstname" name="Firstname" placeholder="any">
     </br>

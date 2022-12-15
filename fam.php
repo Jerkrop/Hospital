@@ -2,10 +2,14 @@
 <DOCTYPE html>
 <html>
     <head>
-    <title>Mengele Memorial</title>
+    <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="willcss.css">
+    <title>family</title>
     </head>
     <body>
-    <sidebar>
+    <sidebar class='sidebar'>
       <div id="sidebarContainer">
         <ul id="sidebarList">
         <a href="login.php">
@@ -21,9 +25,9 @@
       </div>
     </sidebar>
     <form action="fam.php" method="post">
-        <input type="date" name="date" value="Enter the date of the appointment">
-        <input type="text" name="patid">
-        <input type="text" name="famcode">
+        <input type="date" name="date">
+        <input type="text" name="patid" placeholder="enter patient's id">
+        <input type="text" name="famcode" placeholder="enter family code">
         <input type="submit" name="submit">
     </form>
     <table>
