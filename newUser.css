@@ -84,6 +84,21 @@ table, th{
 	width: 15%;
 }
 
+#userForms {
+	display: flex;
+	flex-direction: column;
+}
+
+#addInfoForm {
+	margin-top: 1vw;
+	display: flex;
+	flex-direction: column;
+	background-color: #d3a388;
+	padding: 0.5vh 0 0.5vh 0;
+	border: 1px solid #482728;
+	width: 50vw;
+}
+
 #rolesTable {
 	width: 20vw;
 }

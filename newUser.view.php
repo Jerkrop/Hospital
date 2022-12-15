@@ -24,6 +24,7 @@ if (!isset($_SESSION)) {
 	</header>
 	<contentContainer>
 		<?php
+				if (isset($_SESSION['access'])) {
 		if ($_SESSION['Access'] == 4) {
 			echo "<sidebar>
 		<div id='sidebarContainer'>
@@ -145,21 +146,34 @@ if (!isset($_SESSION)) {
 		</div>
 	  </sidebar>";
 		}
+	}
 		?>
-
-		<form action="newUser.view.php" method="post">
-			<table id="newUsers">
-				<tr>
-					<th class="headRow">Name</th>
-					<th class="headRow">Role</th>
-					<th class="headRow" id="approvedHeader">Approve</th>
-				</tr>
-				<?php
-				makeUserTable()
-				?>
-			</table>
-			<input type="submit" name="submitAccount">
-		</form>
+		<div id="userForms">
+			<form action="newUser.view.php" method="post">
+				<table id="newUsers">
+					<tr>
+						<th class="headRow">Name</th>
+						<th class="headRow">Role</th>
+						<th class="headRow" id="approvedHeader">Approve</th>
+					</tr>
+					<?php
+					makeUserTable()
+					?>
+				</table>
+				<input type="submit" name="submitAccount">
+			</form>
+			<div id="addInfoForm">
+				<form action="newUser.view.php" method="post">
+					<label for="patientId">Patient Id:</label>
+					<input type="text" name="patientId" id="idInput">
+					<label for="patientGroup">Patient Group:</label>
+					<input type="text" name="patientGroup" id="groupInput">
+					<label for="admissionDate">Admission Date:</label>
+					<input type="date" name="admissionDate" id="admissionDate">
+					<input type="submit" name="additionalInfo">
+				</form>
+			</div>
+		</div>
 		<?php
 		if (isset($_SESSIO['access'])) {
 			if ($_SESSION['access'] == 6) {
