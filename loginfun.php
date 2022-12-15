@@ -4,13 +4,13 @@ if(session_status() == PHP_SESSION_ACTIVE){
 }
 session_start();
 
-$db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
+$db_handle = pg_connect("host=localhost dbname=Hospital user=postgres password=Meegee12");
 
 $query = " SELECT email, password_, role_, user_id
             FROM user_ ";
 $user = pg_query($db_handle, $query);
 
-$query = " SELECT employeerole, accesslevel
+$query = " SELECT userrole, accesslevel
             FROM roles";
 $roles = pg_query($db_handle, $query);
 
