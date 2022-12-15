@@ -1,5 +1,5 @@
 <?php
-    $dbconn = pg_connect("host=localhost  dbname=Hospital user=postgres password=Meegee12");
+    $dbconn = pg_connect("host=localhost  dbname=Hospital user=williemdevenney password=password");
     if(isset($_POST['reg_user'])&&!empty($_POST['reg_user'])){
 
         $sql = "insert into User_(fname,lname,email,phone_num,password_,DoB)
@@ -11,6 +11,5 @@
         $ret = pg_query($dbconn,$sql );
     
 }
-pg_close()
 
 ?>
