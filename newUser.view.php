@@ -1,8 +1,8 @@
 <?php
-	if (!isset($_SESSION)) {
-		session_start();
-		require 'roster.php';
-	}
+if (!isset($_SESSION)) {
+	session_start();
+	require 'newUser.php';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +11,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="roster.css">
-	<title>Roster</title>
+	<link rel="stylesheet" href="newUser.css">
+	<title>Accept User | Admin</title>
 </head>
 
 <body>
@@ -23,9 +23,9 @@
 		</a>
 	</header>
 	<contentContainer>
-	<?php
-	if($_SESSION['Access'] == 4){
-		echo "<sidebar>
+		<?php
+		if ($_SESSION['Access'] == 4) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -40,9 +40,8 @@
 		  </ul>
 		</div>
 	  </sidebar>";
-	}
-	else if($_SESSION['Access'] == 1){
-		echo "<sidebar>
+		} else if ($_SESSION['Access'] == 1) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -57,9 +56,8 @@
 		  </ul>
 		</div>
 	  </sidebar>";
-	}
-	else if($_SESSION['Access'] == 3){
-		echo "<sidebar>
+		} else if ($_SESSION['Access'] == 3) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -77,9 +75,8 @@
 		  </ul>
 		</div>
 	  </sidebar>";
-	}
-	else if($_SESSION['Access'] == 2){
-		echo "<sidebar>
+		} else if ($_SESSION['Access'] == 2) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -93,10 +90,9 @@
 			  </a>
 		  </ul>
 		</div>
-	  </sidebar>";		
-	}
-	else if($_SESSION['Access'] == 6){
-		echo "<sidebar>
+	  </sidebar>";
+		} else if ($_SESSION['Access'] == 6) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -123,9 +119,8 @@
 		  </ul>
 		</div>
 	  </sidebar>";
-	}
-	else if($_SESSION['Access'] == 5){
-		echo "<sidebar>
+		} else if ($_SESSION['Access'] == 5) {
+			echo "<sidebar>
 		<div id='sidebarContainer'>
 		  <ul id='sidebarList'>
 			  <a href='login.php'>
@@ -149,31 +144,57 @@
 		  </ul>
 		</div>
 	  </sidebar>";
-	}
-	?>
-		<roster>
-			<h1 id="rosterHeader">Roster</h1>
-			<datePicker>
-				<form action="roster.view.php" id="dateForm" method="post">
-					<label for="dateSelector">Choose a date:</label>
-					<input type="date" id="dateSelector" name="dateSelector">
-					<button type="submit">Select</button>
-				</form>
-			</datePicker>
-			<table id="rosterTable">
+		}
+		?>
+
+		<form action="newUser.view.php" method="post">
+			<table id="newUsers">
 				<tr>
-					<th class="headRow">First Name</th>
-					<th class="headRow">Last Name</th>
+					<th class="headRow">Name</th>
 					<th class="headRow">Role</th>
-					<th class="headRow">Group #</th>
+					<th class="headRow" id="approvedHeader">Approve</th>
 				</tr>
 				<?php
-					makeTable();
+				makeUserTable()
 				?>
 			</table>
-		</roster>
+			<input type="submit" name="submitAccount">
+		</form>
+		<?php
+		if (isset($_SESSIO['access'])) {
+			if ($_SESSION['access'] == 6) {
+				echo '
+				<div id="roleManager">
+				<table id="rolesTable">
+					<tr>
+						<th class="headRow">Role</th>
+						<th class="headRow">Access Level</th>
+					</tr>
+					<?php
+						makeRolesTable()
+					?>
+				</table>
+				<form action="newUser.view.php" method="post" id="addRoleForm">
+					<p id="newRoleHeader">New Role</p>
+					<div class="newRoleInputs">
+						<label for="roleName">Name: </label>
+						<input class="roleInput" type="text" name="roleName" id="nameInput" form="addRoleForm">
+					</div>
+					<div class="newRoleInputs">
+						<label for="accessLevel">Access Level: </label>
+						<input type="text" name="accessLevel" id="accessLevel" class="roleInput" form="addRoleForm">
+					</div>
+					<input type="submit" name="submitRole" id="submitRole" form="addRoleForm">
+				</form>
+			</div>
+	
+				';
+			}
+		}
+		?>
 	</contentContainer>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

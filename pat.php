@@ -5,10 +5,25 @@
     <title>Mengele Memorial</title>
     </head>
     <body>
+    <sidebar>
+      <div id="sidebarContainer">
+        <ul id="sidebarList">
+        <a href="login.php">
+          <li>logout</li>
+        </a>
+        <a href="pat.php">
+          <li>Home</li>
+        </a>
+        <a href="roster.view.php">
+          <li>Roster</li>
+        </a>
+        </ul>
+      </div>
+    </sidebar>
         <p><?php echo $patid;?></p>
         <p><?php echo $patname;?></p>
     <form action="pat.php" method="post">
-        <input type="date" name="date" value="Enter the date of the appointment">
+        <input type="date" name="date" value="<?php echo date('Y-m-d');?>">
         <input type="submit" name="submit">
     </form>
     <table>

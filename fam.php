@@ -5,6 +5,21 @@
     <title>Mengele Memorial</title>
     </head>
     <body>
+    <sidebar>
+      <div id="sidebarContainer">
+        <ul id="sidebarList">
+        <a href="login.php">
+          <li>logout</li>
+        </a>
+        <a href="fam.php">
+          <li>Home</li>
+        </a>
+        <a href="roster.view.php">
+          <li>Roster</li>
+        </a>
+        </ul>
+      </div>
+    </sidebar>
     <form action="fam.php" method="post">
         <input type="date" name="date" value="Enter the date of the appointment">
         <input type="text" name="patid">

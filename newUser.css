@@ -1,0 +1,131 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #e7d8c9;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #394f49;
+	padding: 1vw;
+	margin-bottom: 5vh;
+	border: 1px solid #482728;
+}
+
+#accountIcon {
+	font-size: 2em;
+	color: #000;
+}
+
+contentContainer {
+	display: flex;
+}
+
+sidebar {
+	display: flex;
+	flex-direction: column;
+	margin-right: 2vw;
+}
+
+#sidebarContainer {
+	border: 1px solid #482728;
+	padding: 1vh 0 1vh 0;
+	background-color: #d3a388;	
+	width: 15vw;
+	height: auto;
+}
+
+#sidebarList li {
+	list-style-type: none;
+	width: 100%;
+	padding: 0.5vh 0vw 0.5vh 2vw;
+}
+
+#sidebarContainer a {
+	width: 100%;
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+}
+
+#sidebarContainer li:hover {
+	background-color: #C58663;
+}
+
+table, th{
+	background-color: #d3a388;
+	border: 1px solid #482728;
+	border-collapse: collapse;
+}
+
+#newUsers {
+	width:50vw;
+	margin-right: 1vw;
+}
+
+#newUsers, th {
+	padding: 0.5vh 0 0.5vh 0;
+}
+
+.headRow {
+	background-color: #C58663;
+	font-size: 1.25em;
+	padding: 0.5vh 0 0.5vh 0;
+}
+
+#approvedHeader {
+	width: 15%;
+}
+
+#rolesTable {
+	width: 20vw;
+}
+
+#roleManager {
+	margin: 0 0 1vw 1vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#addRoleForm {
+	margin-top: 1vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #d3a388;
+	border: 1px solid #482728;
+	width: 15vw;
+}
+
+#newRoleHeader {
+	text-align: center;
+	margin: 0 0 1vh 0;
+	padding: 0.5vh 0 0.5vh 0;
+	font-weight: bold;
+	font-size: 1.25em;
+	background-color: #C58663;
+	width: 100%;
+	border-bottom: 1px solid #482728;
+}
+
+.newRoleInputs {
+	display: flex;
+	justify-content: right;
+	margin: 0.5vh 0 0.5vh 0;
+}
+
+.roleInput{
+	width: 50%;
+}
+
+#submitRole {
+	margin: 0.5vh 0 0.5vh 0;
+}

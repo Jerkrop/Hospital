@@ -1,4 +1,7 @@
 <?php
+if(session_status() == PHP_SESSION_ACTIVE){
+    session_destroy();
+}
 session_start();
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=postgres password=Meegee12");
@@ -52,8 +55,19 @@ if(isset($_POST['submit'])){
     if($email == true and $pass == true){
         for($x = 0; $x < count($role); $x++){
             if($role[$x] == $userrole[$place]){
-                $_SESSION["Access"] = $levels[$x];
-                $access = $levels[$x];
+                $query = " SELECT Approved
+                            FROM user_ 
+                            WHERE user_id =" . $_SESSION['id'];
+                $Q = pg_query($db_handle, $query);
+                $approval = pg_fetch_all_columns($Q);
+                if($approval[0] == 't'){
+                    $_SESSION["Access"] = $levels[$x];
+                    $access = $levels[$x];
+                }
+                else{
+                    echo 'not approved';
+                }
+
             }
         }
     }
@@ -66,11 +80,11 @@ if(isset($_POST['submit'])){
         exit;
     }
     elseif($access == 3){
-        header("Location: care.php");
+        header("Location: caregiver.php");
         exit;
     }
     elseif($access == 4){
-        header("Location: doc.php");
+        header("Location: doc1.php");
         exit;
     }
     elseif($access == 5){

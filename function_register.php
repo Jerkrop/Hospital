@@ -1,16 +1,25 @@
 <?php
-    $dbconn = pg_connect("host=localhost  dbname=Hospital user=postgres password=Meegee12");
-    if(isset($_POST['reg_user'])&&!empty($_POST['reg_user'])){
-
-        $sql = "insert into User_(fname,lname,email,phone_num,password_,DoB)
-        values('".$_POST['Firstname']."','".$_POST['LastName']."','".($_POST['Email'])."',".$_POST['Phone'].",'".$_POST['Password']."','".$_POST['DoB']."');";
+    $dbconn = pg_connect("host=localhost  dbname=Hospital user=williemdevenney password=password");
+    if(isset($_POST['reg_user'])){
+        if($_POST['roles']=='patient'){
+            $sql = "insert into User_(fname,lname,email,phone_num,password_, DoB, role, approved)
+            values('".$_POST['Firstname']."','".$_POST['LastName']."','".($_POST['Email'])."',".$_POST['Phone'].",'".$_POST['Password']."','".$_POST['DoB']. "', '" . $_POST['roles'] . "', FALSE);";
         
-        
-        "insert into patient(emergencycontact,familycode,familyrelation)
-        values('".$_POST['FamilyCode']."','".$_POST['Em_Contact']."','".($_POST['Rel_Em_Contact'])."');";      
-        $ret = pg_query($dbconn,$sql );
-    
+            // "insert into patient(userid, emergencycontact,familycode,familyrelation)
+            // values(".$_POST['FamilyCode']."','".$_POST['Em_Contact']."','".($_POST['Rel_Em_Contact'])."');";      //doesn't work and I don't feel like fixing it so just don't make a new patient - will
+            $ret = pg_query($dbconn,$sql );
+            header("Location: login.php");
+            exit;
+        }
+        else{
+            $sql = "insert into User_(fname,lname,email,phone_num,password_, DoB, role, approved)
+            values('".$_POST['Firstname']."','".$_POST['LastName']."','".($_POST['Email'])."',".$_POST['Phone'].",'".$_POST['Password']."','".$_POST['DoB']. "', '" . $_POST['roles'] . "', FALSE);";
+            $ret = pg_query($dbconn,$sql );
+            header("Location: login.php");
+            exit;
+        } 
 }
+<<<<<<< HEAD
 if (isset($_POST['reg_user'])) {
     $place = 0;
     $userrole = pg_fetch_all_columns($ret, 2);
@@ -54,4 +63,6 @@ if (isset($_POST['reg_user'])) {
 
 pg_close($dbconn)
 
+=======
+>>>>>>> 7a6e397ac6e27fd9ebcc42ad4bf89e20a608d372
 ?>

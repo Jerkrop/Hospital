@@ -42,7 +42,8 @@ $query = "SELECT user_id, fname, lname
 $cares = pg_query($db_handle, $query);
 
 $query = "SELECT userid, PatientGroup
-            FROM patient";
+            FROM patient
+            WHERE userid =" . $patid;
 $pat = pg_query($db_handle, $query);
 
 $query = "SELECT UserId, PatientGroup
@@ -50,10 +51,18 @@ $query = "SELECT UserId, PatientGroup
 $caregroups = pg_query($db_handle, $query);
 
 $query = "SELECT *
-            FROM activities";
+            FROM activities
+            WHERE pat_id =" . $patid;
 $acts = pg_query($db_handle, $query);
 
-if(isset($_POST['submit'])){
+if((isset($_POST['submit']))or(!isset($first))){
+    if(!isset($first)){
+        $first = true;
+        $date = date('Y-m-d');
+    }
+    else{
+        $date = $_POST['date'];
+    }
     $dates = pg_fetch_all_columns($apps, 1);
     $appids = pg_fetch_all_columns($apps, 3);
     $patids = pg_fetch_all_columns($pat);
@@ -74,9 +83,9 @@ if(isset($_POST['submit'])){
     $carelast = pg_fetch_all_columns($cares, 2);
     $caregroup = pg_fetch_all_columns($caregroups, 1);
     $caregroupid = pg_fetch_all_columns($caregroups);
-    if(in_array($_POST['date'], $dates)){
+    if(in_array($date, $dates)){
         for($i = 0; $i < count($dates); $i++){
-            if(($dates[$i] == $_POST['date']) and ($appids[$i] == $patid)){
+            if(($dates[$i] == $date) and ($appids[$i] == $patid)){
                 for($x = 0; $x < count($patids); $x++){
                     if($patids[$x] == $patid){
                         $appointment = 'yes';
@@ -144,8 +153,57 @@ if(isset($_POST['submit'])){
         }
     }
     else{
-        echo "no appointment scheduled";
+        for($y = 0; $y < count($actids); $y++){
+            if($actids[$y] == $patid){
+                    if($morns[$y] == true){
+                        $morning = 'yes';
+                    }
+                    else{
+                        $morning = 'no';
+                    }
+                    if($afts[$y] == true){
+                        $afternoon = 'yes';
+                    }
+                    else{
+                        $afternoon = 'no';
+                    }
+                    if($nits[$y] == true){
+                        $night = 'yes';
+                    }
+                    else{
+                        $night = 'no';
+                    }
+                    if($breaks[$y] == true){
+                        $breakfast= 'yes';
+                    }
+                    else{
+                        $breakfast = 'no';
+                    }
+                    if($luns[$y] == true){
+                        $lunch = 'yes';
+                    }
+                    else{
+                        $lunch = 'no';
+                    }
+                    if($dins[$y] == true){
+                        $dinner = 'yes';
+                    }
+                    else{
+                        $dinner = 'no';
+                    }
+                    break;
+                }
+            }
+            for($z = 0; $z < count($caregroupid); $z++){
+                if($caregroup[$z] == $patgroup[0]){
+                    for($w = 0; $w < count($careids); $w++){
+                        if($caregroupid[$z] = $careids[$w]){
+                            $caregiver = $carefirst[$w] . $carelast[$w];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
-}
-$VAR = "cool";
 ?>
