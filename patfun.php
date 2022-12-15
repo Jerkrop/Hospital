@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['date'])){
+    $_SESSION['date'] = date('Y-m-d');
+}
 
 $db_handle = pg_connect("host=localhost dbname=Hospital user=williemdevenney password=password");
 $docname = '';
@@ -23,7 +26,7 @@ for($x = 0; $x < count($patids); $x++){
     if($patids[$x] == $patid){
         $patfirst = pg_fetch_all_columns($patnames, 1);
         $patlast = pg_fetch_all_columns($patnames, 2);
-        $patname = $patfirst[$x] . $patlast[$x];
+        $patname = $patfirst[$x] . " " . $patlast[$x];
     }
 }
 
@@ -55,14 +58,9 @@ $query = "SELECT *
             WHERE pat_id =" . $patid;
 $acts = pg_query($db_handle, $query);
 
-if((isset($_POST['submit']))or(!isset($first))){
-    if(!isset($first)){
-        $first = true;
-        $date = date('Y-m-d');
-    }
-    else{
-        $date = $_POST['date'];
-    }
+if(isset($_POST['submit'])){
+    $date = $_POST['date'];
+    $_SESSION['date'] = $date;
     $dates = pg_fetch_all_columns($apps, 1);
     $appids = pg_fetch_all_columns($apps, 3);
     $patids = pg_fetch_all_columns($pat);
@@ -132,7 +130,7 @@ if((isset($_POST['submit']))or(!isset($first))){
                         }
                         for($z = 0; $z < count($docids); $z++){
                             if($docids[$z] == $appdoc[$i]){
-                                $docname = $docfirst[$z] . $doclast[$z];
+                                $docname = $docfirst[$z] . " " . $doclast[$z];
                                 break;
                             }
                         }
@@ -141,7 +139,7 @@ if((isset($_POST['submit']))or(!isset($first))){
                                 for($w = 0; $w < count($careids); $w++)
                                 {
                                     if($caregroupid[$z] = $careids[$w]){
-                                        $caregiver = $carefirst[$w] . $carelast[$w];
+                                        $caregiver = $carefirst[$w] . " " . $carelast[$w];
                                         break;
                                     }
                                 }
@@ -198,7 +196,7 @@ if((isset($_POST['submit']))or(!isset($first))){
                 if($caregroup[$z] == $patgroup[0]){
                     for($w = 0; $w < count($careids); $w++){
                         if($caregroupid[$z] = $careids[$w]){
-                            $caregiver = $carefirst[$w] . $carelast[$w];
+                            $caregiver = $carefirst[$w] . " " . $carelast[$w];
                             break;
                         }
                     }

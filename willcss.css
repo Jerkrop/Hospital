@@ -1,0 +1,18 @@
+* {
+	padding: 0;
+	margin-left:auto;
+    margin-right:auto;
+	box-sizing: border-box;
+    text-align:center;
+    block-size: fit-content;
+    width: fit-content;
+}
+
+body{
+    width: 100% !important;
+}
+
+.sidebar{
+    float: left;
+    margin-left:0 !important;
+}
