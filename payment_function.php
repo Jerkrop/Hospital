@@ -1,34 +1,22 @@
 <?php
     $dbconn = pg_connect("host=localhost  dbname=Hospital user=postgres password=Meegee12");
-    $result_str = $result = '';
-if (isset($_POST['submit'])) {
-    $units = $_POST['submit'];
-    if (!empty($units)) {
-        $result = calculate_bill($units);
-        $result_str = 'Total amount of ' . $units . ' - ' . $result;
-    }
+$v = false;
+if (isset($_POST['submit1'])) {
+
+    $query = "SELECT totaldue FROM patient";
+
+    $ret = pg_query($dbconn,$query);
+    $x = pg_fetch_all_columns($ret);
+    echo $x [0];
+    $v = true;
 }
-function calculate_bill($units)
-{
-    $unit_cost_first = 10;
-    $unit_cost_second = 50;
-    $unit_cost_third = 5;
+if ($v= true && isset($_POST['submit2'])) {
+    $y = $_POST['NewPayment'];
+    $z = $x [0] + $y;
+    $query2 = " UPDATE patient SET totaldue = $z";
+    $ret2 = pg_query($dbconn,$query2);
 
-    if ($units <= 50) {
-        $bill = $units * $unit_cost_first;
-    } else if ($units > 10) {
-        $temp = 50 * $unit_cost_first;
-        $remaining_units = $units - 50;
-        $bill = $temp + ($remaining_units * $unit_cost_second);
-    } else if ($units > 50) {
-        $temp = (50 * 3.5) + (100 * $unit_cost_second);
-        $remaining_units = $units - 5;
-        $bill = $temp + ($remaining_units * $unit_cost_third);
-    } return number_format((float)$bill, 2, '.', '');
 }
-   
-
-
 
 pg_close($dbconn)
 ?>

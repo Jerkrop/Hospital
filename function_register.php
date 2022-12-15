@@ -11,7 +11,45 @@
         $ret = pg_query($dbconn,$sql );
     
 }
+if (isset($_POST['reg_user'])) {
+    $place = 0;
+    $userrole = pg_fetch_all_columns($ret, 2);
+    $id = pg_fetch_all_columns($ret, 3);
+    $role = pg_fetch_all_columns($ret);
+    $levels = pg_fetch_all_columns($ret, 1);
+    $access = "";
+    if($role[$x] == $userrole[$place]){
+        $_SESSION["Access"] = $levels[$x];
+        $access = $levels[$x];
+    if($access == 1){
+        header("Location: fam.php");
+        exit;
+    }
+    elseif($access == 2){
+        header("Location: pat.php");
+        exit;
+    }
+    elseif($access == 3){
+        header("Location: care.php");
+        exit;
+    }
+    elseif($access == 4){
+        header("Location: doc.php");
+        exit;
+    }
+    elseif($access == 5){
+        header("Location: admin.php");
+        exit;
+    }
+    elseif($access == 6){
+        header("Location: admin.php");
+        exit;
+    }
+}
 
+
+
+}
 
 
 pg_close($dbconn)

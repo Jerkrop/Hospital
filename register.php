@@ -1,11 +1,10 @@
-
 <html>
     <link rel="stylesheet" href="register.css">
 <title>Register Page </title>
 <h1>  Register </h1>
 <div class="flexbox-container1">
 
-<form action="function.php" method="POST">
+<form action="login.php" method="POST">
 <label for="roles">Choose A Role</label>
 <select name="roles" id="roles">
     <option  value ="Family"> Family</option>
@@ -16,7 +15,6 @@
     <option value ="Supervisor"> Supervisor</option>
 </select>
 </br>
-<form   action="/login.php" method="POST">
     <label for="Firstname">First Name:</label>
     <input type="text" id="Firstname" name="Firstname" placeholder="any">
     </br>
